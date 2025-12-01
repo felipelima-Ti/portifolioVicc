@@ -285,9 +285,8 @@ export default function Page() {
           </div>
           <p>Envia-me uma mensagem </p>
           <br></br>
-          vitóriatenfen.c@gmail.com
          <form 
-  action="https://formsubmit.co/felipelima1114@gmail.com"
+  action="https://formsubmit.co/vitóriatenfen.c@gmail.com"
   method="POST"
   className="space-y-6"
 >
