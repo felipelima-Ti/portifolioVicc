@@ -318,7 +318,7 @@ export default function Page() {
   <input type="hidden" name="_template" value="table" />
 
   {/* REDIRECIONAMENTO */}
-  <input type="hidden" name="_next" value="http://localhost:3000/email"/>
+  <input type="hidden" name="_next" value="https://portifolio-vic.vercel.app/email"/>
 
   <button
     type="submit"
