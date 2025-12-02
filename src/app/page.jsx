@@ -72,7 +72,7 @@ export default function Page() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
+            transition={{ delay: 0.2, duration: 3 }}
             className="mt-4 text-lg"
           >
             Venha transformar seus espaços conosco realizando seus sonhos!
