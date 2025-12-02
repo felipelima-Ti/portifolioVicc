@@ -173,7 +173,7 @@ export default function Page() {
                   height={300}
                   className="rounded-xl shadow-lg"
                 />
-                <p className="text-sm mt-2">Cobrador</p>
+                <p className="text-sm mt-2">Comprador - Obras</p>
                 <p className="text-sm mt-2"><b>2 ano e 1 mes</b></p>
               </div>
 
@@ -210,8 +210,8 @@ export default function Page() {
 
         {/* PROJECTS */}
         <section id="projects" className="ml-4 mt-20 mr-5 mt-50">
-          <h2 className="text-3xl font-semibold text-gray-700 ml-20 "> Meus Projetos Recentes</h2>
-          <p className=" mb-10 text-gray-700 ml-20">Meu projetos demostrando um pouco de minhas experiencias e habilidades com arquitetura e urbanismo </p>
+          <h2 className="text-3xl font-semibold text-gray-700 ml-5 "> Meus Projetos Recentes</h2>
+          <p className=" mb-10 text-gray-700 ml-5">Meu projetos demostrando um pouco de minhas experiencias e habilidades com arquitetura e design</p>
 
           <motion.div
             variants={fadeSlide}
@@ -265,12 +265,12 @@ export default function Page() {
           </motion.div>
         </section>
         <section id="contato" className="max-w-6xl mx-auto mt-12 px-4">
-          <h2 className="text-3xl font-semibold text-gray-700 ml-10 "><b> Contato</b></h2>
-          <p className="font-semibold mb-10 text-gray-700 ml-10">Entre em contato para transformar seus espaços!</p>
-         <div className="flex gap-4 mt-5 text-3xl ml-20">
+          <h2 className="text-3xl font-semibold text-gray-700 ml-5 "><b> Contato</b></h2>
+          <p className="font-semibold mb-1 text-gray-700 ml-5">Entre em contato para transformar seus espaços!</p>
+         <div className="flex gap-10 mt-1 text-3xl ml-20">
 </div>
 <div className="mb-40 bg-[] p-5 rounded-xl w-full">
-     <div className="flex m-5 mb-10">
+     <div className="flex m-5 mb-12">
             <a href="https://www.linkedin.com/in/vit%C3%B3ria-tenfen-25575622a/" className="text-blue-700 hover:underline">Linkedin
               <FaLinkedin size={24} className="text-blue-700" />
             </a><br></br>
