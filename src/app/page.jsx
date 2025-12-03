@@ -80,10 +80,13 @@ export default function Page() {
         </section>
 
         {/* SOBRE */}
+        
         <section
           id="sobre"
-          className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 mt-24 px-4"
+          className=""
         >
+           <hr className="border-[#dafdc6] mb-20"></hr>
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 mt-24 px-4">
           <div className="flex-1">
             <motion.h2
               variants={fadeSlide}
@@ -133,6 +136,7 @@ export default function Page() {
               className="p-2 rounded-full shadow-lg border border-gray-600"
             />
           </motion.div>
+          </div>
         </section>
 
         {/* EXPERIÊNCIAS */}
@@ -210,6 +214,7 @@ export default function Page() {
 
         {/* PROJECTS */}
         <section id="projects" className="ml-4 mt-20 mr-5 mt-50">
+          <hr className="mb-20 border-[#dafdc6]"></hr>
           <h2 className="text-3xl font-semibold text-gray-700 ml-5 "> Meus Projetos Recentes</h2>
           <p className=" mb-10 text-gray-700 ml-5">Meu projetos demostrando um pouco de minhas experiencias e habilidades com arquitetura e design</p>
 
@@ -265,6 +270,7 @@ export default function Page() {
           </motion.div>
         </section>
         <section id="contato" className="max-w-6xl mx-auto mt-12 px-4">
+          <hr className="mb-20 border-[#dafdc6] w-100 "></hr>
           <h2 className="text-3xl font-semibold text-gray-700 ml-5 "><b> Contato</b></h2>
           <p className="font-semibold mb-1 text-gray-700 ml-5">Entre em contato para transformar seus espaços!</p>
          <div className="flex gap-10 mt-1 text-3xl ml-20">
