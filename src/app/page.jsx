@@ -5,6 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import {
+  Home,
+  Building2,
+  Palette,
+  Lightbulb,
+  Trees,
+  Ruler
+} from "lucide-react";
 
 export default function Page() {
  // const handleChange = (e) => {
@@ -40,9 +48,9 @@ export default function Page() {
             className="text-4xl md:text-6xl font-bold"
           >
             <div
-              className="w-full h-[820px] bg-cover"
+              className="w-full h-[830px] bg-cover"
               style={{
-                backgroundImage: "url('/cena1.jpeg')",
+                backgroundImage: "url('/coz.png')",
                 backgroundRepeat: "no-repeat",
               }}
             >
@@ -211,12 +219,108 @@ export default function Page() {
             </div>
           </div>
         </section>
+       <div className=" py-20">
+  {/* Título */}
+  <div className="text-center mb-16">
+    <h2 className="text-3xl font-bold text-black">
+      Conheça nossos serviços
+    </h2>
+    <p className="mt-5 text-gray-600">
+      Oferecemos soluções completas em arquitetura e design, do conceito à <br />
+      execução.
+    </p>
+  </div>
+
+  {/* Grid de cards */}
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6 ">
+    
+    {/* Card */}
+    <div className="bg-[#cbf2c2] p-10">
+      <div className="w-12 h-12 bg-[#bbf2a2] flex items-center justify-center mb-6">
+        <Home />
+      </div>
+      <h3 className="text-xl font-semibold mb-4">
+        Arquitetura Residencial
+      </h3>
+      <p className="text-gray-600 leading-relaxed">
+        Projetos de casas e apartamentos que combinam conforto, funcionalidade e
+        estética personalizada.
+      </p>
+    </div>
+
+    <div className="bg-[#cbf2c2] p-10">
+      <div className="w-12 h-12 bg-[#bbf2a2] flex items-center justify-center mb-6">
+        <Building2 />
+      </div>
+      <h3 className="text-xl font-semibold mb-4">
+        Arquitetura Comercial
+      </h3>
+      <p className="text-gray-600 leading-relaxed">
+        Espaços corporativos e comerciais que otimizam a experiência de trabalho
+        e fortalecem marcas.
+      </p>
+    </div>
+
+    <div className="bg-[#cbf2c2] p-10">
+      <div className="w-12 h-12 bg-[#bbf2a2] flex items-center justify-center mb-6">
+        <Palette />
+      </div>
+      <h3 className="text-xl font-semibold mb-4">
+        Design de Interiores
+      </h3>
+      <p className="text-gray-600 leading-relaxed">
+        Transformação de ambientes internos com seleção de materiais,
+        mobiliário e iluminação.
+      </p>
+    </div>
+
+    <div className="bg-[#cbf2c2] p-10">
+      <div className="w-12 h-12 bg-[#bbf2a2] flex items-center justify-center mb-6">
+        <Lightbulb />
+      </div>
+      <h3 className="text-xl font-semibold mb-4">
+        Lighting Design
+      </h3>
+      <p className="text-gray-600 leading-relaxed">
+        Projetos de iluminação que valorizam a arquitetura e criam atmosferas
+        únicas.
+      </p>
+    </div>
+
+    <div className="bg-[#cbf2c2] p-10">
+      <div className="w-12 h-12 bg-[#bbf2a2] flex items-center justify-center mb-6">
+        <Trees />
+      </div>
+      <h3 className="text-xl font-semibold mb-4">
+        Paisagismo
+      </h3>
+      <p className="text-gray-600 leading-relaxed">
+        Integração harmoniosa entre arquitetura e natureza através de projetos de
+        áreas externas.
+      </p>
+    </div>
+
+    <div className="bg-[#cbf2c2] p-10">
+      <div className="w-12 h-12 bg-[#bbf2a2] flex items-center justify-center mb-6">
+        <Ruler />
+      </div>
+      <h3 className="text-xl font-semibold mb-4">
+        Reforma & Retrofit
+      </h3>
+      <p className="text-gray-600 leading-relaxed">
+        Renovação de espaços existentes mantendo a essência e agregando
+        modernidade.
+      </p>
+    </div>
+
+  </div>
+</div>
 
         {/* PROJECTS */}
-        <section id="projects" className="ml-4 mt-20 mr-5 mt-50">
+        <section id="projects" className="ml-4 mr-5 mt-20">
           <hr className="mb-20 border-[#dafdc6]"></hr>
-          <h2 className="text-3xl font-semibold text-gray-700 ml-5 "> Meus Projetos Recentes</h2>
-          <p className=" mb-10 text-gray-700 ml-5">Meu projetos demostrando um pouco de minhas experiencias e habilidades com arquitetura e design</p>
+          <h2 className=" text-center text-3xl font-semibold text-gray-700 m-2">Projetos Recentes</h2>
+          <p className="text-center mb-20 text-gray-700 m-2 mt-5 ">Meus projetos demostrando um pouco de minhas experiencias e habilidades<br></br> com arquitetura e design</p>
 
           <motion.div
             variants={fadeSlide}
