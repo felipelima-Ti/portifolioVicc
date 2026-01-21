@@ -48,21 +48,24 @@ export default function Page() {
             className="text-4xl md:text-6xl font-bold"
           >
             <div
-              className="w-full h-[830px] bg-cover"
+              className="w-full h-[840px] bg-cover"
               style={{
                 backgroundImage: "url('/coz.png')",
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <p className="pt-80 text-white font-light tracking-[0.1em] text-5xl mb-10">
-                Tenha a Casa que voce <br />
+              
+              <p className="text-sm text-white pt-60 mb-5">
+                ESTUDIO ARQUITETURA E DESIGN<br/>
               </p>
+              <p className="text-white font-light tracking-[0.1em] text-5xl mb-5">Tenha a casa que VOÇE</p>
               <b className="text-white">sempre sonhou morar!</b>
+              <p className="text-xl text-gray-300 mt-10">Transformamos visões em realidade através de arquitetura <br></br>contemporânea e design de interiores que equilibra função, estética<br></br> e sustentabilidade.</p>
 
               <div className="flex items-center justify-center">
                 <button
                   onClick={() => {
-                    const section = document.getElementById("projects");
+                    const section = document.getElementById("services");
                     if (section) {
                       section.scrollIntoView({ behavior: "smooth" });
                     }
@@ -74,7 +77,7 @@ export default function Page() {
               </div>
             </div>
 
-            <p className="mt-8">Arquitetura & Design de Interiores</p>
+            <p className="mt-50">Arquitetura & Design de Interiores</p>
           </motion.h1>
 
           <motion.p
@@ -219,8 +222,8 @@ export default function Page() {
             </div>
           </div>
         </section>
+        <section id="services" className="ml-4 mr-5 mt-20"></section>
        <div className=" py-20">
-  {/* Título */}
   <div className="text-center mb-16">
     <h2 className="text-3xl font-bold text-black">
       Conheça nossos serviços
@@ -321,57 +324,82 @@ export default function Page() {
           <hr className="mb-20 border-[#dafdc6]"></hr>
           <h2 className=" text-center text-3xl font-semibold text-gray-700 m-2">Projetos Recentes</h2>
           <p className="text-center mb-20 text-gray-700 m-2 mt-5 ">Meus projetos demostrando um pouco de minhas experiencias e habilidades<br></br> com arquitetura e design</p>
-
+        
           <motion.div
             variants={fadeSlide}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-20"
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 px-0 md:px-20 pb-20 "
           >
+            <div className=" text-xl font-bold transform hover:scale-105 transition-transform duration-300">
             <Image
               src="/cena1.jpeg"
               alt=""
-              width={600}
+              width={900}
               height={400}
-              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
+              className="rounded-xl overflow-hidden shadow-lg "
             />
+            <p className="text-sm pt-5">residencial</p>
+            <p className="mt-4">Residencia personalizada</p>
+            </div>
+            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
             <Image
               src="/cena2.jpeg"
               alt=""
-              width={600}
+              width={900}
               height={400}
               className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
             />
+            <p className="text-sm pt-5">residencial</p>
+            <p className="mt-4">Projeto residencial para banheiro</p>
+            </div>
+            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
             <Image
               src="/cena3.jpeg"
               alt=""
-              width={600}
+              width={900}
               height={400}
-              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
+              className="rounded-xl overflow-hidden shadow-lg"
             />
+            <p className="text-sm pt-5">residencial</p>
+            <p className="mt-4">Projeto residencial para banheiro</p>
+            </div>
+            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
             <Image
               src="/cena7.jpeg"
               alt=""
-              width={600}
+              width={900}
               height={400}
               className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
             />
+            <p className="text-sm pt-5">residencial</p>
+           <p className="mt-4">Projeto residencial para banheiro</p>
+            </div>
+            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
             <Image
               src="/cena5.jpeg"
               alt=""
-              width={600}
+              width={900}
               height={400}
               className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
             />
+            <p className="text-sm pt-5">residencial</p>
+            <p className=" text mt-4">Projeto residencial para cozinha</p>
+            </div>
+            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
             <Image
               src="/cena6.jpeg"
               alt=""
-              width={600}
+              width={900}
               height={400}
               className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
             />
+            <p className="text-sm pt-5">residencial</p>
+            <p className="mt-4">Residencia personalizada</p>
+            </div>
           </motion.div>
+          
         </section>
         <section id="contato" className="max-w-6xl mx-auto mt-12 px-4">
           <hr className="mb-20 border-[#dafdc6] w-100 "></hr>
