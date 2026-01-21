@@ -58,7 +58,7 @@ export default function Page() {
               <p className="text-sm text-white pt-60 mb-5">
                 ESTUDIO ARQUITETURA E DESIGN<br/>
               </p>
-              <p className="text-white font-light tracking-[0.1em] text-5xl mb-5">Tenha a casa que VOÇE</p>
+              <p className="text-white font-light tracking-[0.1em] text-5xl mb-5">Tenha a casa que VOCÊ</p>
               <b className="text-white">sempre sonhou morar!</b>
               <p className="text-xl text-gray-300 mt-10">Transformamos visões em realidade através de arquitetura <br></br>contemporânea e design de interiores que equilibra função, estética<br></br> e sustentabilidade.</p>
 
