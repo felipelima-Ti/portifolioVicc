@@ -424,7 +424,7 @@ export default function Page() {
           <p>Envia-me uma mensagem </p>
           <br></br>
          <form 
-  action="https://formsubmit.co/vitóriatenfen.c@gmail.com"
+  action="https://formsubmit.co/vitoriatenfen.c@gmail.com"
   method="POST"
   className="space-y-6"
 >
