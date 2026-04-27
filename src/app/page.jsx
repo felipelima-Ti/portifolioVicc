@@ -13,6 +13,8 @@ import {
   Trees,
   Ruler
 } from "lucide-react";
+import Typewriter from "./hooks/typewriter";
+import "./style.css";
 
 export default function Page() {
  // const handleChange = (e) => {
@@ -28,12 +30,12 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="m-0 p-0">
       {/* Header fixo único */}
       <header className="fixed top-0 left-0 w-full bg-[#769068] text-white h-20 z-50 flex items-center justify-between px-6">
-        <h1 className="text-xl">Arquitetura e design</h1>
+        <h1 className="text-xl">Arquitetura|design</h1>
         <nav className="flex gap-4">
-          <Link className="text-white" href="#sobre">Sobre mim</Link>
+          <Link className="text-white" href="#sobre">Sobre</Link>
           <Link className="text-white" href="#projects">Projetos</Link>
           <Link className="text-white" href="#contato">Contato</Link>
         </nav>
@@ -47,35 +49,45 @@ export default function Page() {
             transition={{ duration: 0.4 }}
             className="text-4xl md:text-6xl font-bold"
           >
-            <div
-              className="w-full h-[840px] bg-cover"
-              style={{
-                backgroundImage: "url('/coz.png')",
-                backgroundRepeat: "no-repeat",
-              }}
-            >
-              
-              <p className="text-sm text-white pt-60 mb-5">
-                ESTUDIO ARQUITETURA E DESIGN<br/>
-              </p>
-              <p className="text-white font-light tracking-[0.1em] text-5xl mb-5">Tenha a casa que VOCÊ</p>
-              <b className="text-white">sempre sonhou morar!</b>
-              <p className="text-xl text-gray-300 mt-10">Transformamos visões em realidade através de arquitetura <br></br>contemporânea e design de interiores que equilibra função, estética<br></br> e sustentabilidade.</p>
+         <div className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden">
 
-              <div className="flex items-center justify-center">
-                <button
-                  onClick={() => {
-                    const section = document.getElementById("services");
-                    if (section) {
-                      section.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className="w-80 h-12 mt-20 text-xl text-white bg-[#769068] rounded-full flex items-center justify-center"
-                >
-                  <b>Conheça nossos serviços</b>
-                </button>
-              </div>
-            </div>
+  {/* BACKGROUND */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('/coz.png')" }}
+  />
+
+  {/* OVERLAY ESCURO */}
+  <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+
+  {/* CONTEÚDO */}
+  <div className="relative z-10 text-center px-6 max-w-4xl">
+    
+    <p className="text-sm text-gray-300 mb-4 tracking-widest">
+      ESTÚDIO ARQUITETURA E DESIGN
+    </p>
+
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight">
+      Tenha a casa que <span className="font-semibold">você</span>
+      <br /> sempre sonhou morar
+    </h1>
+<Typewriter
+  text="Transformamos visões em realidade através de arquitetura contemporânea e design de interiores"
+  speed={50}
+  className="mt-6 text-gray-200 text-lg sm:text-xl"
+/>
+    <button
+      onClick={() => {
+        const section = document.getElementById("services");
+        section?.scrollIntoView({ behavior: "smooth" });
+      }}
+      className="mt-10 px-8 py-3 bg-[#769068] hover:bg-[#5f7554] transition rounded-full text-white text-lg shadow-lg"
+    >
+      Conheça nossos serviços
+    </button>
+
+  </div>
+</div>
 
             <p className="mt-50">Arquitetura & Design de Interiores</p>
           </motion.h1>
@@ -401,14 +413,14 @@ export default function Page() {
           </motion.div>
           
         </section>
-        <section id="contato" className="max-w-6xl mx-auto mt-12 px-4">
+        <section id="contato" className="max-w-6xl mx-auto mt-12 ">
           <hr className="mb-20 border-[#dafdc6] w-100 "></hr>
           <h2 className="text-3xl font-semibold text-gray-700 ml-5 "><b> Contato</b></h2>
           <p className="font-semibold mb-1 text-gray-700 ml-5">Entre em contato para transformar seus espaços!</p>
          <div className="flex gap-10 mt-1 text-3xl ml-20">
 </div>
 <div className="mb-40 bg-[] p-5 rounded-xl w-full">
-     <div className="flex m-5 mb-12">
+     <div className="flex mb-12">
             <a href="https://www.linkedin.com/in/vit%C3%B3ria-tenfen-25575622a/" className="text-blue-700 hover:underline">Linkedin
               <FaLinkedin size={24} className="text-blue-700" />
             </a><br></br>
