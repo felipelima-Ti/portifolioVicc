@@ -1,487 +1,416 @@
 "use client";
 
-import Image from "next/image";
-//import { useReveal } from "./hooks/useReveal";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import {
-  Home,
-  Building2,
-  Palette,
-  Lightbulb,
-  Trees,
-  Ruler
-} from "lucide-react";
+import { useEffect, useState } from "react";
+import { Building2, Home, Palette, Lightbulb, Trees, Ruler, ArrowRight, Mail } from "lucide-react";
+import { FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import casa from "../../public/coz.png"
+import vic from "../../public/vic.jpeg"
 import Typewriter from "./hooks/typewriter";
-import "./style.css";
+import { Menu, X } from "lucide-react";
 
-export default function Page() {
- // const handleChange = (e) => {
-   // setForm({ ...form, [e.target.name]: e.target.value });
- // };
- // const handleSubmit = (e) => {
-    //console.log("Form submitted:", form);
- // }
- // const revealRef = useReveal();
-  const fadeSlide = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
 
+
+const fade = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const services = [
+  { icon: Home, title: "Arquitetura Residencial", desc: "Projetos de casas e apartamentos que combinam conforto, funcionalidade e estética personalizada." },
+  { icon: Building2, title: "Arquitetura Comercial", desc: "Espaços corporativos e comerciais que otimizam a experiência de trabalho e fortalecem marcas." },
+  { icon: Palette, title: "Design de Interiores", desc: "Transformação de ambientes internos com seleção de materiais, mobiliário e iluminação." },
+  { icon: Lightbulb, title: "Lighting Design", desc: "Projetos de iluminação que valorizam a arquitetura e criam atmosferas únicas." },
+  { icon: Trees, title: "Paisagismo", desc: "Integração harmoniosa entre arquitetura e natureza através de projetos de áreas externas." },
+  { icon: Ruler, title: "Reforma & Retrofit", desc: "Renovação de espaços existentes mantendo a essência e agregando modernidade." },
+];
+
+const experiences = [
+  { place: "Comercial Ivapora", role: "Design de interiores", time: "1 ano e 3 meses",img:"/comercio.jpeg" },
+  { place: "Solução Network", role: "Comprador — Obras", time: "2 anos e 1 mês",img:"comprador.jpeg" },
+  { place: "JD Vidros e Esquadrias", role: "Projetista CAD", time: "5 meses",img:"jd.jpeg" },
+  { place: "Prefeitura de Paranavaí", role: "Projetista", time: "2 anos e 8 meses",img:"pf.png" },
+];
+
+const projects = [
+  {
+    title: "Residência personalizada",
+    img: "/cena1.jpeg",
+  },
+  {
+    title: "Projeto residencial — banheiro",
+    img: "/cena2.jpeg",
+  },
+  {
+    title: "Projeto residencial — banheiro",
+    img: "/cena3.jpeg",
+  },
+  {
+    title: "Projeto residencial — banheiro",
+    img: "/cena7.jpeg",
+  },
+  {
+    title: "Projeto residencial — cozinha",
+    img: "/cozinha.jpeg",
+  },
+  {
+    title: "Residência personalizada II",
+    img: "/cena6.jpeg",
+  },
+];
+
+  export default function Page() {
+    const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="m-0 p-0">
-      {/* Header fixo único */}
-      <header className="fixed top-0 left-0 w-full bg-[#769068] text-white h-20 z-50 flex items-center justify-between px-6">
-        <h1 className="text-xl">Arquitetura|design</h1>
-        <nav className="flex gap-4">
-          <Link className="text-white" href="#sobre">Sobre</Link>
-          <Link className="text-white" href="#projects">Projetos</Link>
-          <Link className="text-white" href="#contato">Contato</Link>
-        </nav>
-      </header>
-
-      <main className="pt-20">
-        <section className="text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-4xl md:text-6xl font-bold"
-          >
-         <div className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden">
-
-  {/* BACKGROUND */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{ backgroundImage: "url('/coz.png')" }}
-  />
-
-  {/* OVERLAY ESCURO */}
-  <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
-
-  {/* CONTEÚDO */}
-  <div className="relative z-10 text-center px-6 max-w-4xl">
+    <div className="min-h-screen bg-background text-foreground">
+      {/* HEADER */}
+     <header className="fixed top-0 z-50 w-full border-b border-border/60 bg-[#769068]/90 text-white backdrop-blur-md">
+  <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
     
-    <p className="text-sm text-gray-300 mb-4 tracking-widest">
-      ESTÚDIO ARQUITETURA E DESIGN
-    </p>
+    <a href="#home" className="font-display text-2xl tracking-tight">
+      Victoria<span className="text-primary">.</span>Tenfen
+    </a>
 
-    <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight">
-      Tenha a casa que <span className="font-semibold">você</span>
-      <br /> sempre sonhou morar
-    </h1>
-<Typewriter
-  text="Transformamos visões em realidade através de arquitetura contemporânea e design de interiores"
-  speed={50}
-  className="mt-6 text-gray-200 text-lg sm:text-xl"
-/>
+    {/* Menu Desktop */}
+    <ul className="hidden gap-10 text-sm md:flex ">
+      {[
+        ["Sobre", "#about"],
+        ["Serviços", "#services"],
+        ["Projetos", "#projects"],
+        ["Contato", "#contact"],
+      ].map(([label, href]) => (
+        <li key={href}>
+          <a
+            href={href}
+            className=" text-white text-foreground/70 transition-smooth hover:text-foreground"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {/* Botão Mobile */}
     <button
-      onClick={() => {
-        const section = document.getElementById("services");
-        section?.scrollIntoView({ behavior: "smooth" });
-      }}
-      className="mt-10 px-8 py-3 bg-[#769068] hover:bg-[#5f7554] transition rounded-full text-white text-lg shadow-lg"
+      onClick={() => setMenuOpen(!menuOpen)}
+      className="md:hidden"
     >
-      Conheça nossos serviços
+      {menuOpen ? (
+        <X className="h-6 w-6" />
+      ) : (
+        <Menu className="h-6 w-6" />
+      )}
     </button>
+  </nav>
 
-  </div>
-</div>
-
-            <p className="mt-50 text-black/80">Arquitetura & Design de Interiores</p>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 3 }}
-            className="mt-4 text-lg text-black/70"
-          >
-            Venha transformar seus espaços conosco realizando seus sonhos!
-          </motion.p>
-        </section>
-
-        {/* SOBRE */}
-        
-        <section
-          id="sobre"
-          className=""
-        >
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 mt-24 px-4">
-          <div className="flex-1">
-            <motion.h2
-              variants={fadeSlide}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="text-3xl font-semibold mb-6 text-black/80"
+  {/* Menu Mobile */}
+  {menuOpen && (
+    <div className="md:hidden border-t border-border bg-background">
+      <ul className="flex flex-col p-4">
+        {[
+          ["Sobre", "#about"],
+          ["Serviços", "#services"],
+          ["Projetos", "#projects"],
+          ["Contato", "#contact"],
+        ].map(([label, href]) => (
+          <li key={href}>
+            <a
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="block py-3 text-foreground/80 hover:text-primary"
             >
-              Sobre o Estudio
-            </motion.h2>
-            <hr className="border-1 border-[#769068] mb-10 w-80"></hr>
-
-            <motion.p
-              variants={fadeSlide}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="text-black  leading-relaxed mb-6"
-            >
-              <b className="text -xm text-green-900 text-2xl">Olá, meu nome e Victoria Tenfen</b>
-              <br />
-              <p className="">
-              Sou apaixonada por transformar espaços em experiências. Acredito que cada
-              ambiente carrega uma história — e meu trabalho é revelar essa narrativa
-              através de equilíbrio, função e estética. Atuo na área de Arquitetura e
-              Design de Interiores, criando projetos que unem conforto, personalidade e
-              propósito.
-              </p>
-            </motion.p>
-
-            <Link href="#contato">
-              <button className="mt-10 h-10 bg-[#486e37]/89 w-60 rounded-xl text-white">
-                Mande-me uma mensagem
-              </button>
-            </Link>
-          </div>
-
-          <motion.div
-            variants={fadeSlide}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="mb-10"
-          >
-            <Image
-              src="/vic.jpeg"
-              alt="Foto de Perfil"
-              width={350}
-              height={350}
-              className="p-2 rounded-full shadow-lg border border-[#486e37]"
-            />
-          </motion.div>
-          </div>
-        </section>
-
-        {/* EXPERIÊNCIAS */}
-        <section className="max-w-6xl mx-auto mt-12 px-4">
-          <motion.h2
-            variants={fadeSlide}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="text-3xl font-semibold mb-6 text-gray-700"
-          >
-            Experiências
-          </motion.h2>
-
-          <div className="relative mt-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-start">
-              {/* Bloco 1 */}
-              <div className="flex flex-col items-start">
-                <p className="text-xl mb-2 ">Comercial ivapora</p>
-                <Image
-                  src="/comercio.jpeg"
-                  alt="Foto de Perfil"
-                  width={100}
-                  height={300}
-                  className="rounded-xl shadow-lg"
-                />
-                <p className="text-sm mt-2 ">Design de interiores</p>
-                <p className="text-sm mt-2 text-[#486e37]"><b>1 ano e 3 mes</b></p>
-              </div>
-
-              {/* Bloco 2 */}
-              <div className="flex flex-col items-start">
-                <p className="text-xl mb-2">Solução network</p>
-                <Image
-                  src="/comprador.jpeg"
-                  alt="Foto de Perfil"
-                  width={100}
-                  height={300}
-                  className="rounded-xl shadow-lg"
-                />
-                <p className="text-sm mt-2">Comprador - Obras</p>
-                <p className="text-sm mt-2 text-[#486e37]"><b>2 ano e 1 mes</b></p>
-              </div>
-
-              {/* Bloco 3 */}
-              <div className="flex flex-col items-start">
-                <p className="text-xl mb-2 ">JD Vidros e Esquadrias</p>
-                <Image
-                  src="/jd.jpeg"
-                  alt="Foto de Perfil"
-                  width={100}
-                  height={300}
-                  className="rounded-xl shadow-lg"
-                />
-                <p className="text-sm mt-2">Projetista CAD</p>
-                <p className="text-sm mt-2 text-[#486e37]"><b>5 meses</b></p>
-              </div>
-
-              {/* Bloco 4 */}
-              <div className="flex flex-col items-start">
-                <p className="text-xl mb-2">Prefeitura de Paranavaí</p>
-                <Image
-                  src="/pf.png"
-                  alt="Foto de Perfil"
-                  width={100}
-                  height={300}
-                  className="rounded-xl shadow-lg"
-                />
-                <p className="text-sm mt-2">Projetista</p>
-                <p className="text-sm mt-2 text-[#486e37]"><b>2 ano e 8 mes</b></p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="services" className="ml-4 mr-5 mt-20"></section>
-       <div className=" py-20">
-  <div className="text-center mb-16">
-    <h2 className="text-3xl font-bold text-green-900/80 ">
-      Conheça nossos serviços
-    </h2>
-    <p className="mt-5 text-gray-600">
-      Oferecemos soluções completas em arquitetura e design, do conceito à <br />
-      execução.
-    </p>
-  </div>
-
-  {/* Grid de cards */}
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6 ">
-    
-    {/* Card */}
-    <div className="bg-[#769068]/97 p-10 rounded-xl">
-      <div className="w-12 h-12 bg-[#769068]/50 text-white flex items-center justify-center mb-6">
-        <Home />
-      </div>
-      <h3 className="text-xl text-white font-semibold mb-4">
-        Arquitetura Residencial
-      </h3>
-      <p className="text-white leading-relaxed">
-        Projetos de casas e apartamentos que combinam conforto, funcionalidade e
-        estética personalizada.
-      </p>
-    </div>
-
-    <div className="bg-[#769068]/97 p-10 rounded-xl">
-      <div className="w-12 h-12 bg-[#769068]/50 text-white flex items-center justify-center mb-6">
-        <Building2 />
-      </div>
-      <h3 className="text-xl text-white font-semibold mb-4">
-        Arquitetura Comercial
-      </h3>
-      <p className="text-gray-600 leading-relaxed text-white">
-        Espaços corporativos e comerciais que otimizam a experiência de trabalho
-        e fortalecem marcas.
-      </p>
-    </div>
-
-    <div className="bg-[#769068]/97 p-10 rounded-xl">
-      <div className="w-12 h-12 bg-[#769068]/50 text-white flex items-center justify-center mb-6">
-        <Palette />
-      </div>
-      <h3 className="text-xl font-semibold mb-4 text-white">
-        Design de Interiores
-      </h3>
-      <p className="text-gray-600 leading-relaxed text-white">
-        Transformação de ambientes internos com seleção de materiais,
-        mobiliário e iluminação.
-      </p>
-    </div>
-
-    <div className="bg-[#769068]/97 p-10 rounded-xl">
-      <div className="w-12 h-12 bg-[#769068]/50 text-white flex items-center justify-center mb-6">
-        <Lightbulb />
-      </div>
-      <h3 className="text-xl text-white font-semibold mb-4">
-        Lighting Design
-      </h3>
-      <p className="text-gray-600 leading-relaxed text-white">
-        Projetos de iluminação que valorizam a arquitetura e criam atmosferas
-        únicas.
-      </p>
-    </div>
-
-    <div className="bg-[#769068]/97 p-10 rounded-xl">
-      <div className="w-12 h-12 bg-[#769068]/50 text-white flex items-center justify-center mb-6">
-        <Trees />
-      </div>
-      <h3 className="text-xl font-semibold mb-4 text-white">
-        Paisagismo
-      </h3>
-      <p className="text-gray-600 leading-relaxed text-white">
-        Integração harmoniosa entre arquitetura e natureza através de projetos de
-        áreas externas.
-      </p>
-    </div>
-
-    <div className="bg-[#769068]/97 p-10 rounded-xl">
-      <div className="w-12 h-12 bg-[#769068]/50 text-white flex items-center justify-center mb-6">
-        <Ruler />
-      </div>
-      <h3 className="text-xl font-semibold mb-4 text-white">
-        Reforma & Retrofit
-      </h3>
-      <p className="text-gray-600 leading-relaxed text-white">
-        Renovação de espaços existentes mantendo a essência e agregando
-        modernidade.
-      </p>
-    </div>
-
-  </div>
-</div>
-
-        {/* PROJECTS */}
-        <section id="projects" className="ml-4 mr-5 mt-20">
-          <hr className="mb-20 border-[#dafdc6]"></hr>
-          <h2 className=" text-center text-3xl font-semibold text-gray-700 m-2">Projetos Recentes</h2>
-          <p className="text-center mb-20 text-gray-700 m-2 mt-5 ">Meus projetos demostrando um pouco de minhas experiencias e habilidades<br></br> com arquitetura e design</p>
-        
-          <motion.div
-            variants={fadeSlide}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 px-0 md:px-20 pb-20 "
-          >
-            <div className=" text-xl font-bold transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/cena1.jpeg"
-              alt=""
-              width={900}
-              height={400}
-              className="rounded-xl overflow-hidden shadow-lg "
-            />
-            <p className="text-sm pt-5">residencial</p>
-            <p className="mt-4">Residencia personalizada</p>
-            </div>
-            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/cena2.jpeg"
-              alt=""
-              width={900}
-              height={400}
-              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
-            />
-            <p className="text-sm pt-5">residencial</p>
-            <p className="mt-4">Projeto residencial para banheiro</p>
-            </div>
-            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/cena3.jpeg"
-              alt=""
-              width={900}
-              height={400}
-              className="rounded-xl overflow-hidden shadow-lg"
-            />
-            <p className="text-sm pt-5">residencial</p>
-            <p className="mt-4">Projeto residencial para banheiro</p>
-            </div>
-            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/cena7.jpeg"
-              alt=""
-              width={900}
-              height={400}
-              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
-            />
-            <p className="text-sm pt-5">residencial</p>
-           <p className="mt-4">Projeto residencial para banheiro</p>
-            </div>
-            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/cena5.jpeg"
-              alt=""
-              width={900}
-              height={400}
-              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
-            />
-            <p className="text-sm pt-5">residencial</p>
-            <p className=" text mt-4">Projeto residencial para cozinha</p>
-            </div>
-            <div className="text-xl font-bold transform hover:scale-105 transition-transform duration-300">
-            <Image
-              src="/cena6.jpeg"
-              alt=""
-              width={900}
-              height={400}
-              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
-            />
-            <p className="text-sm pt-5">residencial</p>
-            <p className="mt-4">Residencia personalizada</p>
-            </div>
-          </motion.div>
-          
-        </section>
-        <section id="contato" className="max-w-6xl mx-auto mt-12 ">
-          <hr className="mb-20 border-[#dafdc6] w-100 "></hr>
-           <p className=" text-2xl font-semibold mb-1 text-black/70  mb-10 ">Contato</p>
-          <p className=" font-semibold mb-1 text-black/70  mb-10 ">Entre em contato para transformar seus espaços!</p>
-         <div className="flex gap-10 mt-1 text-3xl ml-20">
-</div>
-<div className="mb-40 border border-green-700/60 p-5 rounded-xl w-full bg-[#769068]/10">
-     <div className="flex mb-12">
-            <a href="https://www.linkedin.com/in/vit%C3%B3ria-tenfen-25575622a/" className="text-blue-700 hover:underline">Linkedin
-              <FaLinkedin size={24} className="text-blue-700" />
-            </a><br></br>
-          <br></br>
-            <a href="https://www.instagram.com/victenfen/" className="text-rose-400 hover:underline pl-5">Instagram
-              <FaInstagram size={24} className="text-rose-400" />
-            </a><br></br>
-            <a href="https://wa.me/554498669742" className="text-green-700 hover:underline pl-5">WhatsApp
-              <FaWhatsapp size={24} className="text-green-700" />
+              {label}
             </a>
-            <br></br>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</header>
+
+      {/* HERO */}
+      <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+       <img
+  src="/coz.png"
+  alt="Interior arquitetura sofisticada"
+  width={1920}
+  height={1080}
+  className="absolute inset-0 h-full w-full object-cover"
+/>
+        <div className="absolute inset-0 bg-hero-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-secondary/40 via-transparent to-primary/20" />
+
+        <motion.div
+          initial="hidden" animate="show" variants={fade}
+          className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white"
+        >
+          <p className="mb-6 text-xs uppercase tracking-[0.4em] text-white/80">
+            Estúdio de Arquitetura e Design
+          </p>
+          <h1 className="font-display text-5xl leading-[1.05] sm:text-6xl md:text-7xl">
+            Tenha a casa que você sempre sonhou
+            <br />
+            <Typewriter
+  text="Projetos que unem conforto, personalidade e propósito — do conceito à execução."
+  speed={50}
+  className="mx-auto mt-8 max-w-xl text-lg text-white/85"
+/>
+          </h1>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="#services"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-primary-foreground shadow-elegant transition-smooth hover:bg-primary-glow"
+            >
+              Conheça nossos serviços
+              <ArrowRight className="h-4 w-4 transition-smooth group-hover:translate-x-1" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-white/40 px-8 py-3 text-white backdrop-blur-sm transition-smooth hover:bg-white/10"
+            >
+              Fale comigo
+            </a>
           </div>
-          <p>Envia-me uma mensagem </p>
-          <br></br>
-         <form 
-  action="https://formsubmit.co/vitoriatenfen.c@gmail.com"
-  method="POST"
-  className="space-y-6"
->
-  <input
-    name="name"
-    placeholder="Seu Nome"
-    className="w-full p-3 rounded-xl bg-[#769068]/30 border border-green-700/60"
-    required
+        </motion.div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 animate-float">
+          <div className="h-12 w-[1px] bg-white/60" />
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="relative py-32">
+        <div className="mx-auto grid max-w-7xl gap-16 px-6 md:grid-cols-2 md:items-center">
+         
+
+          <motion.div
+            initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={fade}
+            className=""
+          >
+            <span className="text-xs uppercase tracking-[0.4em] text-primary">Sobre o estúdio</span>
+            <h2 className="mt-4 text-4xl md:text-5xl">
+              Olá, sou <span className="text-gradient">Victoria Tenfen</span>
+            </h2>
+            <div className="mt-6 h-px w-24 bg-gradient-primary" />
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Apaixonada por transformar espaços em experiências. Acredito que cada
+              ambiente carrega uma história — e meu trabalho é revelar essa narrativa
+              através de equilíbrio, função e estética. Atuo em arquitetura e design
+              de interiores criando projetos que unem conforto, personalidade e propósito.
+            </p>
+            <a
+              href="#contact"
+              className="mt-10 inline-flex items-center gap-2 border-1 border-black rounded-full bg-black/70 px-7 py-3 text-secondary-foreground transition-smooth hover:bg-foreground"
+            >
+              <Mail className="h-4 w-4" /> Mande-me uma mensagem
+            </a>
+          </motion.div>
+           <motion.div
+            initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={fade}
+            className="relative"
+          >
+            <div className="absolute -left-6 -top-6 h-full w-100 rounded-3xl opacity-90" />
+          <img
+  src="/vic.jpeg"
+  alt="Victoria Tenfen, arquiteta"
+  width={400}
+  height={1100}
+  loading="lazy"
+  className=" border-2 border-green-800/50 p-1 relative rounded-full object-cover shadow-ink"
+/>
+          </motion.div>
+        </div>
+
+        {/* Experiências */}
+        <div className="mx-auto mt-32 max-w-6xl ">
+          <h3 className="text-center text-3xl md:text-4xl">Experiências</h3>
+          <div className="mx-auto mt-3 h-px w-20 bg-gradient-primary" />
+          <div className="ml-5 mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-start">
+            {experiences.map((e, i) => (
+              <motion.div
+                key={e.place}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className=""
+              >
+                <div className="" />
+                <h4 className="text-xm text-black">{e.place}</h4>
+               <img
+  src={e.img}
+  alt={e.place}
+  className="w-50 h-45 object-cover rounded-lg"
+/>
+ <p className="mt-2 text-xl text-primary/90">{e.role}</p>
+                <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{e.time}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="relative overflow-hidden bg-secondary py-32 text-secondary-foreground">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, oklch(0.7 0.08 145) 0%, transparent 50%)" }} />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <span className="text-xs uppercase tracking-[0.4em] text-primary-glow">O que fazemos</span>
+            <h2 className="mt-4 text-4xl md:text-5xl">Conheça nossos serviços</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-white/70">
+              Oferecemos soluções completas em arquitetura e design, do conceito à execução.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.06 }}
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm transition-smooth hover:border-primary/60 hover:bg-white/[0.08]"
+              >
+                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-primary opacity-0 blur-2xl transition-smooth group-hover:opacity-40" />
+                <div className="relative">
+                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground shadow-elegant">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-6 text-2xl">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">{desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects" className="py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <span className="text-xs uppercase tracking-[0.4em] text-primary">Portfólio</span>
+            <h2 className="mt-4 text-4xl md:text-5xl">Projetos Recentes</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
+              Uma seleção que demonstra minha experiência em arquitetura e design de interiores.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project,i) => (
+              <motion.a
+                key={i}
+               // href=""
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.06 }}
+                className="group relative block overflow-hidden rounded-3xl"
+              >
+                <div
+                  className="aspect-[4/5] w-full bg-cover bg-center transition-smooth group-hover:scale-105"
+                style={{
+                backgroundImage: `url(${project.img})`,}}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/30 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-primary-glow">Residencial</span>
+                  <h3 className="mt-2 text-2xl">{project.title}</h3>
+                  <div className="mt-3 flex items-center gap-2 text-sm opacity-0 transition-smooth group-hover:opacity-100">
+                    Ver projeto <ArrowRight className="h-4 w-4" />
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="relative overflow-hidden py-32">
+        <div className="absolute inset-0 bg-gradient-dark" />
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 80% 20%, oklch(0.7 0.08 145) 0%, transparent 40%)" }} />
+
+        <div className="relative mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-2 md:items-start">
+          <motion.div
+            initial="hidden" whileInView="show" viewport={{ once: true }} variants={fade}
+            className="text-white"
+          >
+            <span className="text-xs uppercase tracking-[0.4em] text-primary-glow">Vamos conversar</span>
+            <h2 className="mt-4 text-4xl md:text-5xl">Entre em contato</h2>
+            <p className="mt-5 max-w-md text-white/70">
+              Pronto para transformar seus espaços? Me envie uma mensagem ou siga pelas redes.
+            </p>
+
+            <div className="mt-10 space-y-3">
+              {[
+                { Icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/vit%C3%B3ria-tenfen-25575622a/" },
+                { Icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/victenfen/" },
+                { Icon: FaWhatsapp, label: "WhatsApp", href: "https://wa.me/554498669742" },
+              ].map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-sm transition-smooth hover:border-primary/60 hover:bg-white/10"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-white">{label}</span>
+                  <ArrowRight className="ml-auto h-4 w-4 text-white/50 transition-smooth group-hover:translate-x-1 group-hover:text-primary-glow" />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.form
+            initial="hidden" whileInView="show" viewport={{ once: true }} variants={fade}
+            action="https://formsubmit.co/vitoriatenfen.c@gmail.com"
+            method="POST"
+            className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-md shadow-ink"
+          >
+            <h3 className="text-3xl text-white">Envie-me uma mensagem</h3>
+            <div className="mt-6 space-y-4">
+                <input
+    type="hidden"
+    name="_next"
+    value="https://portifolio-vic.vercel.app/email"
   />
 
   <input
-    type="email"
-    name="email"
-    placeholder="Seu Email"
-    className="w-full p-3 rounded-xl bg-[#769068]/30 border border-green-700/60"
-    required
+    type="hidden"
+    name="_captcha"
+    value="false"
   />
+              <input
+                name="name" required placeholder="Seu nome"
+                className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 outline-none transition-smooth focus:border-primary focus:bg-white/10"
+              />
+              <input
+                type="email" name="email" required placeholder="Seu email"
+                className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 outline-none transition-smooth focus:border-primary focus:bg-white/10"
+              />
+              <textarea
+                name="message" required rows={4} placeholder="Sua mensagem"
+                className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 outline-none transition-smooth focus:border-primary focus:bg-white/10"
+              />
+              <button
+                type="submit"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-primary-foreground shadow-elegant transition-smooth hover:bg-primary-glow"
+              >
+                Enviar mensagem
+                <ArrowRight className="h-4 w-4 transition-smooth group-hover:translate-x-1" />
+              </button>
+            </div>
+          </motion.form>
+        </div>
+      </section>
 
-  <textarea
-    name="message"
-    placeholder="Sua Mensagem"
-    rows="4"
-    className="w-full p-3 rounded-xl bg-[#769068]/30 border border-green-700/60"
-    required
-  />
-  <input type="hidden" name="_subject" value="Nova mensagem no seu site!" />
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_template" value="table" />
-
-  {/* REDIRECIONAMENTO */}
-  <input type="hidden" name="_next" value="https://portifolio-vic.vercel.app/email"/>
-
-  <button
-    type="submit"
-    className="w-full py-3 rounded-xl bg-[#769068] text-white transition mb-20 border border-black/40"
-  >
-    Enviar Mensagem
-  </button>
-</form>
-
-</div>
-        </section>
-      </main>
+      <footer className="border-t border-border bg-background py-8 text-center text-sm text-muted-foreground">
+        © {new Date().getFullYear()} Victoria Tenfen — Arquitetura & Design
+      </footer>
     </div>
   );
 }
