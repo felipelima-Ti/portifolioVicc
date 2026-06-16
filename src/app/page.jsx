@@ -41,8 +41,8 @@ const projects = [
     title: "Residência personalizada",
     img: [
     "/cena1.jpeg",
-    "/cena1.jpeg",
-    "/cena1.jpeg"
+    "/cena6.jpeg",
+    "/cena4.jpeg"
   ],
       description:
       "Projeto residencial contemporâneo com integração entre áreas internas e externas."
