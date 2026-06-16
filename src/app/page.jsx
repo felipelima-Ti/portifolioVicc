@@ -1,13 +1,16 @@
-"use client";
+"use client"
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Building2, Home, Palette, Lightbulb, Trees, Ruler, ArrowRight, Mail } from "lucide-react";
+import { Building2, Home, Palette, Lightbulb, Trees, Ruler, ArrowRight,Menu, X , Mail,ChevronLeft, ChevronRight } from "lucide-react";
 import { FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import casa from "../../public/coz.png"
 import vic from "../../public/vic.jpeg"
 import Typewriter from "./hooks/typewriter";
-import { Menu, X } from "lucide-react";
+
+
+
+
 
 
 
@@ -15,6 +18,7 @@ const fade = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
+
 
 const services = [
   { icon: Home, title: "Arquitetura Residencial", desc: "Projetos de casas e apartamentos que combinam conforto, funcionalidade e estética personalizada." },
@@ -35,32 +39,92 @@ const experiences = [
 const projects = [
   {
     title: "Residência personalizada",
-    img: "/cena1.jpeg",
+    img: [
+    "/cena1.jpeg",
+    "/cena1.jpeg",
+    "/cena1.jpeg"
+  ],
+      description:
+      "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
     title: "Projeto residencial — banheiro",
-    img: "/cena2.jpeg",
+    img: [
+    "/cena2.jpeg",
+    "/cena3.jpeg",
+    "/cena3.jpeg"
+  ],
+    description:
+    "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
     title: "Projeto residencial — banheiro",
-    img: "/cena3.jpeg",
+  img: [
+    "/cena7.jpeg",
+    "/cena3.jpeg",
+    "/cena3.jpeg"
+  ],
+    description:
+    "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
     title: "Projeto residencial — banheiro",
-    img: "/cena7.jpeg",
+   img: [
+    "/cena3.jpeg",
+    "/cena3.jpeg",
+    "/cena3.jpeg"
+  ],
+    description:
+    "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
     title: "Projeto residencial — cozinha",
-    img: "/cozinha.jpeg",
+   img: [
+    "/cena5.jpeg",
+    "/cena4.jpeg",
+    "/cena4.jpeg"
+  ],
+    description:
+    "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
     title: "Residência personalizada II",
-    img: "/cena6.jpeg",
+   img: [
+    "/cena6.jpeg",
+    "/cena1.jpeg",
+    "/cena4.jpeg"
+  ],
+    description:
+    "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
 ];
 
+
+
   export default function Page() {
-    const [menuOpen, setMenuOpen] = useState(false);
+   
+    const [menuOpen, setMenuOpen] = useState(false); 
+    const [selectedProject, setSelectedProject] = useState(null);
+   const [currentImage, setCurrentImage] = useState(0);
+   const prevImage = () => {
+  if (!selectedProject?.img) return;
+
+  setCurrentImage((prev) =>
+    prev === 0
+      ? selectedProject.img.length - 1
+      : prev - 1
+  );
+};
+
+const nextImage = () => {
+  if (!selectedProject?.img) return;
+
+  setCurrentImage((prev) =>
+    prev === selectedProject.img.length - 1
+      ? 0
+      : prev + 1
+  );
+}; 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* HEADER */}
@@ -300,19 +364,20 @@ const projects = [
 
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project,i) => (
-              <motion.a
-                key={i}
-               // href=""
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.06 }}
-                className="group relative block overflow-hidden rounded-3xl"
-              >
+            <motion.a
+  key={i}
+  onClick={() => {
+  setSelectedProject(project);setCurrentImage(0);}}
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.55, delay: i * 0.06 }}
+  className="group relative block cursor-pointer overflow-hidden rounded-3xl"
+>
                 <div
                   className="aspect-[4/5] w-full bg-cover bg-center transition-smooth group-hover:scale-105"
                 style={{
-                backgroundImage: `url(${project.img})`,}}
+                backgroundImage: `url(${project.img[0]})`}}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
@@ -326,6 +391,57 @@ const projects = [
             ))}
           </div>
         </div>
+        {selectedProject && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+    onClick={() => setSelectedProject(null)}
+  >
+    <div
+      className="relative max-w-6xl w-full h-200 overflow-hidden rounded-3xl bg-background"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={() => setSelectedProject(null)}
+        className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white"
+      >
+        ✕
+      </button>
+
+     <img
+  src={selectedProject.img[currentImage]}
+  alt={selectedProject.title}
+  className="h-[450px] w-full object-cover"
+/>
+<button
+  onClick={prevImage}
+  className="absolute left-4 top-1/3 -translate-y-1/2 rounded-full bg-black/10 p-2 text-white"
+>
+  <ChevronLeft size={25} />
+</button>
+
+<button
+  onClick={nextImage}
+  className="absolute right-4 top-1/3 -translate-y-1/2 rounded-full bg-black/10 p-2 text-white"
+>
+  <ChevronRight size={26} />
+</button>
+      <div className="p-6">
+        <span className="text-xs uppercase tracking-[0.3em] text-primary">
+          Residencial
+        </span>
+
+        <h3 className="mt-2 text-3xl font-semibold">
+          {selectedProject.title}
+        </h3>
+
+        <p className="mt-4 text-muted-foreground">
+          {selectedProject.description ||
+            "Descrição do projeto. Aqui você pode adicionar informações como área construída, localização, conceito arquitetônico e materiais utilizados."}
+        </p>
+      </div>
+    </div>
+  </div>
+)}
       </section>
 
       {/* CONTACT */}
