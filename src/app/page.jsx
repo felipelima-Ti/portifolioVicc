@@ -3,22 +3,13 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Building2, Home, Palette, Lightbulb, Trees, Ruler, ArrowRight,Menu, X , Mail,ChevronLeft, ChevronRight } from "lucide-react";
-import { FaLinkedin, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import casa from "../../public/coz.png"
-import vic from "../../public/vic.jpeg"
+import { FaLinkedin, FaInstagram, FaWhatsapp,FaArrowDown } from "react-icons/fa";
 import Typewriter from "./hooks/typewriter";
-
-
-
-
-
-
 
 const fade = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
-
 
 const services = [
   { icon: Home, title: "Arquitetura Residencial", desc: "Projetos de casas e apartamentos que combinam conforto, funcionalidade e estética personalizada." },
@@ -42,17 +33,17 @@ const projects = [
     img: [
     "/cena1.jpeg",
     "/cena6.jpeg",
-    "/cena4.jpeg"
+    "/quarto.jpeg"
   ],
       description:
       "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
-    title: "Projeto residencial — banheiro",
+    title: "Residência personalizada II",
     img: [
-    "/cena2.jpeg",
-    "/cena3.jpeg",
-    "/cena3.jpeg"
+    "/casa.jpeg",
+    "/area.png",
+    "/casa2.png"
   ],
     description:
     "Projeto residencial contemporâneo com integração entre áreas internas e externas."
@@ -61,18 +52,18 @@ const projects = [
     title: "Projeto residencial — banheiro",
   img: [
     "/cena7.jpeg",
-    "/cena3.jpeg",
+    "/banheiro.jpeg",
     "/cena3.jpeg"
   ],
     description:
     "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
-    title: "Projeto residencial — banheiro",
+    title: "Projeto residencial — banheiro II",
    img: [
-    "/cena3.jpeg",
-    "/cena3.jpeg",
-    "/cena3.jpeg"
+    "/ban1.jpeg",
+    "/ban2.jpeg",
+    "/ban3.jpeg"
   ],
     description:
     "Projeto residencial contemporâneo com integração entre áreas internas e externas."
@@ -81,25 +72,23 @@ const projects = [
     title: "Projeto residencial — cozinha",
    img: [
     "/cena5.jpeg",
-    "/cena4.jpeg",
+    "/casa3.png",
     "/cena4.jpeg"
   ],
     description:
     "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
   {
-    title: "Residência personalizada II",
+    title: "Residência personalizada III",
    img: [
-    "/cena6.jpeg",
-    "/cena1.jpeg",
-    "/cena4.jpeg"
+    "/quarto2.png",
+    "/casaa.png",
+    "/paisagem.png"
   ],
     description:
     "Projeto residencial contemporâneo com integração entre áreas internas e externas."
   },
 ];
-
-
 
   export default function Page() {
    
@@ -215,7 +204,7 @@ const nextImage = () => {
             Tenha a casa que você sempre sonhou
             <br />
             <Typewriter
-  text="Projetos que unem conforto, personalidade e propósito — do conceito à execução."
+  text="Projetos que unem conforto, personalidade e propósito do conceito à execução."
   speed={50}
   className="mx-auto mt-8 max-w-xl text-lg text-white/85"
 />
@@ -239,7 +228,8 @@ const nextImage = () => {
         </motion.div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 animate-float">
-          <div className="h-12 w-[1px] bg-white/60" />
+          <div className="h-12 w-[0px] bg-white/60" />
+          <FaArrowDown className=" text-white/50 mx-auto h-8 w-6 animate-bounce" />
         </div>
       </section>
 
@@ -361,7 +351,7 @@ const nextImage = () => {
               Uma seleção que demonstra minha experiência em arquitetura e design de interiores.
             </p>
           </div>
-
+{/* Projects Grid */}
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project,i) => (
             <motion.a
@@ -402,7 +392,7 @@ const nextImage = () => {
     >
       <button
         onClick={() => setSelectedProject(null)}
-        className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white"
+        className="absolute right-4 top-4 z-10 rounded-xl bg-black/50 p-3 text-white"
       >
         ✕
       </button>
@@ -414,14 +404,14 @@ const nextImage = () => {
 />
 <button
   onClick={prevImage}
-  className="absolute left-4 top-1/3 -translate-y-1/2 rounded-full bg-black/10 p-2 text-white"
+  className="absolute left-4 top-1/3 -translate-y-1/2 rounded-full bg-black/10 p-2 text-white hover:bg-black/50"
 >
-  <ChevronLeft size={25} />
+  <ChevronLeft className="" size={25} />
 </button>
 
 <button
   onClick={nextImage}
-  className="absolute right-4 top-1/3 -translate-y-1/2 rounded-full bg-black/10 p-2 text-white"
+  className="absolute right-4 top-1/3 -translate-y-1/2 rounded-full bg-black/10 p-2 text-white hover:bg-black/50"
 >
   <ChevronRight size={26} />
 </button>
