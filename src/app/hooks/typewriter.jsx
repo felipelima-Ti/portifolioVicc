@@ -8,7 +8,7 @@ export default function Typewriter({
 }) {
   //efeito fade nos textos
   const [displayedText, setDisplayedText] = useState("");
-  //c
+  //renderiza o texto com efeito de máquina de escrever
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
