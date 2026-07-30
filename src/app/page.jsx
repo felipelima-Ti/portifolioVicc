@@ -162,7 +162,6 @@ const nextImage = () => {
       <ul className="flex flex-col p-4">
         {[
           ["Sobre", "#about"],
-          ["Serviços", "#services"],
           ["Projetos", "#projects"],
           ["Contato", "#contact"],
         ].map(([label, href]) => (
@@ -246,7 +245,7 @@ const nextImage = () => {
             <h2 className="mt-4 text-4xl md:text-5xl">
               Olá, sou <span className="text-gradient">Victoria Tenfen</span>
             </h2>
-            <div className="mt-6 h-px w-24 bg-gradient-primary" />
+            <div className="mt-6 h-px w-24 bg-gradient-primary pr-20" />
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Apaixonada por transformar espaços em experiências. Acredito que cada
               ambiente carrega uma história — e meu trabalho é revelar essa narrativa
@@ -271,7 +270,7 @@ const nextImage = () => {
   width={400}
   height={1100}
   loading="lazy"
-  className=" border-2 border-green-800/50 p-1 relative rounded-full object-cover shadow-ink"
+  className="relative rounded-full border-2 border-green-800/50 p-1 md:ml-32 "
 />
           </motion.div>
         </div>
