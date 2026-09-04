@@ -253,10 +253,10 @@ const nextImage = () => {
               de interiores criando projetos que unem conforto, personalidade e propósito.
             </p>
             <a
-              href="#contact"
+              href="#projects"
               className="mt-10 inline-flex items-center gap-2 border-1 border-black rounded-full bg-black/70 px-7 py-3 text-secondary-foreground transition-smooth hover:bg-foreground"
             >
-              <Mail className="h-4 w-4" /> Mande-me uma mensagem
+              <Home className="h-4 w-4" /> Veja meus projetos
             </a>
           </motion.div>
            <motion.div
